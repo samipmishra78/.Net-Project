@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Adjust as needed
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 16.666667%; /* Equals to col-md-2 */
+        height: 100vh;
+        background-color: #343a40;
+        padding: 1.5rem;
+        color: white;
+    }
+
+    .main-content {
+        margin-left: 16.666667%; /* Make space for fixed sidebar */
+        padding: 2rem;
+    }
+
+    .sidebar a {
+        color: white;
+        display: block;
+        margin-bottom: 1rem;
+        text-decoration: none;
+    }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h4>Student Panel</h4>
+    <hr />
+    <a asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+    <a href="#">My Courses</a>
+    <a href="#">Assignments</a>
+    <a href="#">Results</a>
+    <a href="#">Settings</a>
+</div>
+
+<!-- Main content -->
+<div class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Welcome to your Dashboard</h3>
+        <div class="d-flex align-items-center">
+            <span class="me-3 fw-bold">Logged in as: @ViewBag.MySession</span>
+            <form asp-controller="Home" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Courses</div>
+                <div class="card-body">
+                    <h5 class="card-title">5 Enrolled</h5>
+                    <p class="card-text">View all your courses and materials.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Assignments</div>
+                <div class="card-body">
+                    <h5 class="card-title">2 Pending</h5>
+                    <p class="card-text">Check your assignment deadlines.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Results</div>
+                <div class="card-body">
+                    <h5 class="card-title">Latest Score: 85%</h5>
+                    <p class="card-text">View your academic performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
